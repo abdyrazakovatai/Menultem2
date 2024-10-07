@@ -35,17 +35,36 @@ public class RestaureanDaoImpl implements RestaurantDao {
     }
 
     @Override
-    public String update(Long id, Restaurant restaurant) {
-        return "";
+    public String findById(Long id) {
+        for (Restaurant restaurant : database.restaurants) {
+                if (restaurant.getId().equals(id)) {
+                    return "Restaurant with id " + id + " found";
+
+            }
+        }
+        return "Restaurant with id " + id + " not found";
+    }
+    @Override
+    public String update(Long id, Restaurant newRestaurant) {
+        for (Restaurant restaurant1 : database.restaurants) {
+            if (restaurant1.getId().equals(id)) {
+                restaurant1.setName(newRestaurant.getName());
+                restaurant1.setLocation(newRestaurant.getLocation());
+                restaurant1.setRestType(newRestaurant.getRestType());
+                return "Restaurant with id " + id + " updated";
+            }
+        }
+        return "Restaurant with id " + id + " not found";
     }
 
-    @Override
-    public String findById(Long id) {
-        return "";
-    }
 
     @Override
     public List<Restaurant> getRestaurantByType(String restType) {
-        return List.of();
+        for (Restaurant restaurant : database.restaurants) {
+            if (restaurant.getRestType().equals(restType)) {
+                return List.of(restaurant);
+            }
+        }
+        return null;
     }
 }
