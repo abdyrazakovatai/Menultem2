@@ -6,6 +6,7 @@ import org.example.db.Database;
 import org.example.model.Restaurant;
 import org.example.service.RestaurantService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -45,17 +46,38 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
-    public String update(Long id, Restaurant restaurant) {
-        return "";
+    public String findById(Long id) {
+        for (Restaurant restaurant : database.restaurants) {
+            if (restaurant == null) {
+                return "Restaurant is null";
+            } else {
+                restaurantDao.findById(id);
+            }
+        }
+        return "Restaurant is find";
     }
 
     @Override
-    public String findById(Long id) {
-        return "";
+    public String update(Long id, Restaurant newRestaurant) {
+        for (Restaurant restaurant : database.restaurants) {
+            if (restaurant == null) {
+                return "Restaurant is null";
+            } else if (restaurant.getId().equals(id)) {
+                restaurantDao.update(id, newRestaurant);
+            }
+        }
+        return "Restaurant is update";
     }
+
 
     @Override
     public List<Restaurant> getRestaurantByType(String restType) {
-        return List.of();
+        List<Restaurant> filteredRestaurants = new ArrayList<>();
+        for (Restaurant restaurant : database.restaurants) {
+            if (restaurant.getRestType() != null && restaurant.getRestType().equals(restType)) {
+                filteredRestaurants.add(restaurant);
+            }
+        }
+        return filteredRestaurants;
     }
 }
