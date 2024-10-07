@@ -5,6 +5,7 @@ import org.example.db.Database;
 import org.example.model.Restaurant;
 
 import java.util.List;
+import java.util.Set;
 
 public class RestaureanDaoImpl implements RestaurantDao {
 
@@ -25,9 +26,15 @@ public class RestaureanDaoImpl implements RestaurantDao {
     }
 
     @Override
-    public String delete(Long id) {
+    public String deleteByIds(Long id) {
         return "";
     }
+
+    @Override
+    public String deleteByIds(Set<Long> ids) {
+        return "";
+    }
+
 
     @Override
     public List<Restaurant> getAll() {
