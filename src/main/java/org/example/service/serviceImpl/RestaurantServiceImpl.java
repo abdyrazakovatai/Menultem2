@@ -7,6 +7,7 @@ import org.example.model.Restaurant;
 import org.example.service.RestaurantService;
 
 import java.util.List;
+import java.util.Set;
 
 public class RestaurantServiceImpl implements RestaurantService {
 
@@ -30,6 +31,11 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     @Override
     public String delete(Long id) {
+        return "";
+    }
+
+    @Override
+    public String deleteByIds(Set<Long> ids) {
         return "";
     }
 
