@@ -1,18 +1,22 @@
 package org.example.dao.daoImpl;
 
-import org.example.dao.MenultemDao;
+import org.example.dao.RestaurantDao;
 import org.example.db.Database;
-import org.example.model.Menultem;
 import org.example.model.Restaurant;
 
 import java.util.List;
 
-public class MenultemDaoImpl implements MenultemDao {
+public class RestaureanDaoImpl implements RestaurantDao {
 
     private final Database database;
 
-    public MenultemDaoImpl(Database database) {
+    public RestaureanDaoImpl(Database database) {
         this.database = database;
+    }
+
+    @Override
+    public String save(Restaurant restaurant) {
+        return "";
     }
 
     @Override
@@ -21,17 +25,17 @@ public class MenultemDaoImpl implements MenultemDao {
     }
 
     @Override
-    public String deleteById(Long id) {
+    public String delete(Long id) {
         return "";
     }
 
     @Override
-    public List<Menultem> getAll() {
+    public List<Restaurant> getAll() {
         return List.of();
     }
 
     @Override
-    public String updateById(Long id, Menultem menultem) {
+    public String update(Long id, Restaurant restaurant) {
         return "";
     }
 
@@ -41,7 +45,7 @@ public class MenultemDaoImpl implements MenultemDao {
     }
 
     @Override
-    public String searchByName(String name) {
-        return "";
+    public List<Restaurant> getRestaurantByType(String restType) {
+        return List.of();
     }
 }

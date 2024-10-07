@@ -1,5 +1,7 @@
 package org.example.model;
 
+import org.example.Generate.GeneratorID;
+
 import java.math.BigDecimal;
 
 public class Menultem {
@@ -13,8 +15,8 @@ public class Menultem {
     public Menultem() {
     }
 
-    public Menultem(Long id, String name, String image, BigDecimal price, String description, Boolean isVegetarian) {
-        this.id = id;
+    public Menultem(String name, String image, BigDecimal price, String description, Boolean isVegetarian) {
+        this.id = GeneratorID.getMenultemID();
         this.name = name;
         this.image = image;
         this.price = price;

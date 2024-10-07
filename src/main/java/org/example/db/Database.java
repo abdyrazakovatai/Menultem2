@@ -1,10 +1,10 @@
 package org.example.db;
 
-import org.example.model.Menultem;
+import org.example.model.Restaurant;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Database {
-    List<Menultem> menultems = new ArrayList<>();
+   public List<Restaurant> restaurants = new ArrayList<>();
 }
