@@ -10,18 +10,22 @@ import org.example.service.MenultemService;
 import java.util.List;
 
 public class MenultemServiceImpl implements MenultemService {
+    private final  MenultemDao menultemDao ;
 
-    Database database;
+    public MenultemServiceImpl(MenultemDao menultemDao) {
+        this.menultemDao = menultemDao;
+    }
 
-    MenultemDao menultemDao = new MenultemDaoImpl(database);
     @Override
-    public String save(List<Restaurant> restaurants) {
-        return "";
+    public String save(Menultem menultem) {
+        menultemDao.save(menultem);
+        return "Successfully saved";
     }
 
     @Override
     public String deleteById(Long id) {
-        return "";
+        menultemDao.deleteById(id);
+        return "Successfully deleted";
     }
 
     @Override
@@ -41,6 +45,7 @@ public class MenultemServiceImpl implements MenultemService {
 
     @Override
     public String searchByName(String name) {
-        return "";
+        menultemDao.searchByName(name);
+        return "Success Searched by name";
     }
 }

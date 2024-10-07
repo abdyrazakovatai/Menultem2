@@ -8,7 +8,7 @@ import java.util.List;
 public interface MenultemService {
 
 
-    String save(List<Restaurant> restaurants);
+    String save(Menultem menultem);
 
     String deleteById(Long id);
 
