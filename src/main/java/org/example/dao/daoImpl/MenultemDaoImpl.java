@@ -3,7 +3,6 @@ package org.example.dao.daoImpl;
 import org.example.dao.MenultemDao;
 import org.example.db.Database;
 import org.example.model.Menultem;
-import org.example.model.Restaurant;
 
 import java.util.List;
 
@@ -14,15 +13,21 @@ public class MenultemDaoImpl implements MenultemDao {
     public MenultemDaoImpl(Database database) {
         this.database = database;
     }
-
     @Override
-    public String save(List<Restaurant> restaurants) {
-        return "";
+    public String save(Menultem menultem) {
+        database.menultems.add(menultem);
+        return "Successfully saved";
     }
 
     @Override
     public String deleteById(Long id) {
-        return "";
+        for (Menultem menultem : database.menultems) {
+            if (menultem.getId().equals(id)) {
+                database.menultems.remove(menultem);
+                return "Successfully deleted";
+            }
+        }
+        return "MenuItem not found this id" +id;
     }
 
     @Override
@@ -42,6 +47,12 @@ public class MenultemDaoImpl implements MenultemDao {
 
     @Override
     public String searchByName(String name) {
-        return "";
+        for (Menultem menultem : database.menultems) {
+            if (menultem.getName().equalsIgnoreCase(name)) {
+                System.out.println(menultem);
+                return menultem.toString();
+            }
+        }
+        return "not found " + name;
     }
 }

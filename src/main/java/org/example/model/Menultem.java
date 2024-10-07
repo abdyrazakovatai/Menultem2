@@ -74,13 +74,13 @@ public class Menultem {
 
     @Override
     public String toString() {
-        return "Menultem{" +
-               "id=" + id +
+        return "  Menultem {" +
+               "  id=" + id +
                ", name='" + name + '\'' +
                ", image='" + image + '\'' +
                ", price=" + price +
                ", description='" + description + '\'' +
                ", isVegetarian=" + isVegetarian +
-               '}';
+               '}'+"\n";
     }
 }
