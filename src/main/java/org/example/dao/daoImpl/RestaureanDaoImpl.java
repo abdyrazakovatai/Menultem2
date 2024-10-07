@@ -13,6 +13,7 @@ public class RestaureanDaoImpl implements RestaurantDao {
 
     public RestaureanDaoImpl(Database database) {
         this.database = database;
+
     }
 
     @Override
