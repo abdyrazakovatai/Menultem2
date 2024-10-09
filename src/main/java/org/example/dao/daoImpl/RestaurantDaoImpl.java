@@ -32,7 +32,16 @@ public class RestaurantDaoImpl implements RestaurantDao {
 
     @Override
     public String save(List<Restaurant> restaurants) {
-        return "";
+        try {
+            boolean exists = database.restaurants.stream().anyMatch(r -> r.getName().equals(restaurants.getFirst().getName()));
+            if (!exists) {
+                database.restaurants.addAll(restaurants);
+                return "Restaurants added successfully";
+            }
+        } catch (Exception e) {
+            System.out.println("Restaurants not saved " + e.getMessage());
+        }
+        return "A restaurants with this ID exists ";
     }
 
     @Override
