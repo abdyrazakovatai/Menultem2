@@ -1,7 +1,7 @@
 package org.example.service.serviceImpl;
 
 import org.example.dao.RestaurantDao;
-import org.example.dao.daoImpl.RestaureanDaoImpl;
+import org.example.dao.daoImpl.RestaurantDaoImpl;
 import org.example.db.Database;
 import org.example.model.Restaurant;
 import org.example.service.RestaurantService;
@@ -14,7 +14,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     Database database;
 
-    RestaurantDao restaurantDao = new RestaureanDaoImpl(database);
+    RestaurantDao restaurantDao = new RestaurantDaoImpl(database);
 
     public RestaurantServiceImpl(Database database) {
         this.database = database;

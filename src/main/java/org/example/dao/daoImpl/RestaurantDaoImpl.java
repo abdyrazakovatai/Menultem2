@@ -7,19 +7,27 @@ import org.example.model.Restaurant;
 import java.util.List;
 import java.util.Set;
 
-public class RestaureanDaoImpl implements RestaurantDao {
+public class RestaurantDaoImpl implements RestaurantDao {
 
     private final Database database;
 
-    public RestaureanDaoImpl(Database database) {
+    public RestaurantDaoImpl(Database database) {
         this.database = database;
 
     }
 
     @Override
     public String save(Restaurant restaurant) {
-
-        return "";
+        try {
+            boolean exists = database.restaurants.stream().anyMatch(r -> r.getName().equals(restaurant.getName()));
+            if (!exists) {
+                database.restaurants.add(restaurant);
+                return "Restaurant added successfully";
+            }
+        } catch (Exception e) {
+            System.out.println("Restaurant not saved " + e.getMessage());
+        }
+        return "A restaurant with this ID exists ";
     }
 
     @Override
