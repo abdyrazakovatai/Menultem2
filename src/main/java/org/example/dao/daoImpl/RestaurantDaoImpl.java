@@ -51,7 +51,16 @@ public class RestaurantDaoImpl implements RestaurantDao {
 
     @Override
     public String deleteByIds(Set<Long> ids) {
-        return "";
+        try {
+            boolean exists = database.restaurants.stream().anyMatch(r -> r.getId().equals(ids));
+            if (!exists) {
+                database.restaurants.removeAll(ids);
+                System.out.println("Restaurants deleted successfully");
+            }
+        }catch (Exception e) {
+            System.out.println("Restaurants not deleted " + e.getMessage());
+        }
+        return "A restaurants with this ID exists ";
     }
 
 
